@@ -25,6 +25,7 @@ require("lazy").setup({
     { import = "plugins.smoothness" },
     { import = "plugins.harpoon" },
     { import = "plugins.undotree" },
+    { import = "plugins.lualine" },
     { import = "plugins.cmp" },
   },
   defaults = {
