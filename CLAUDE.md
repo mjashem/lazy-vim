@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a personal Neovim configuration based on [LazyVim](https://github.com/LazyVim/LazyVim), a Neovim distribution that uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 
+## Common Commands
+
+| Command | Purpose |
+|---------|---------|
+| `:Lazy sync` | Install, update, and clean plugins |
+| `:Lazy update` | Update all plugins |
+| `:Lazy build` | Build plugins that need compilation |
+| `:Lazy health` | Check plugin manager health |
+| `:Stylua %` | Format current file (requires stylua installed) |
+
 ## Architecture
 
 ### Entry Point
@@ -22,6 +32,11 @@ Each file in this directory is automatically loaded by lazy.nvim. Files return L
 
 - [`colorscheme.lua`](lua/plugins/colorscheme.lua) - Gruvbox Material theme configuration
 - [`flutter.lua`](lua/plugins/flutter.lua) - Flutter/Dart development tools
+- [`harpoon.lua`](lua/plugins/harpoon.lua) - Quick file navigation with Harpoon2
+- [`undotree.lua`](lua/plugins/undotree.lua) - Visual undo history
+- [`smoothness.lua`](lua/plugins/smoothness.lua) - Cursor animation and smooth scrolling
+- [`cmp.lua`](lua/plugins/cmp.lua) - Enhanced cmdline completion with ghost text
+- [`lazygit.lua`](lua/plugins/lazygit.lua) - Git integration with Gruvbox Material theme
 - [`example.lua`](lua/plugins/example.lua) - Reference examples (disabled, returns empty table)
 
 ## Plugin Specification Pattern
@@ -54,6 +69,35 @@ return {
 }
 ```
 
+## Keymap Conventions
+
+### Custom Keymaps in this Config
+
+| Key | Action | Location |
+|-----|--------|----------|
+| `jj` | Exit insert mode | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `d`, `c`, `x` | Delete/change without yank (black hole) | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>yp` / `<leader>yP` | Duplicate line down/up | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<C-j>` / `<C-k>` | Move line down/up | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>w=` | Equalize windows | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>wH/J/K/L` | Move window to edge | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>bW` | Wipeout all buffers | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>qo` / `<leader>qc` | Open/close quickfix | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>ev` / `<leader>ek` | Edit config/keymaps | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>sv` | Source config | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>z*` | Fold operations (recursive toggle, open/close) | [`keymaps.lua`](lua/config/keymaps.lua) |
+| `<leader>ha/he/hh/hj/hk/hl` | Harpoon add/menu/navigate | [`harpoon.lua`](lua/plugins/harpoon.lua) |
+| `<leader>U` | Toggle UndoTree | [`undotree.lua`](lua/plugins/undotree.lua) |
+
+A comprehensive keymap reference is available in [KEYMAP_GUIDE.md](KEYMAP_GUIDE.md).
+
+### Config Access Keymaps
+
+These keymaps provide quick access to configuration files:
+- `<leader>ev` - Edit vim config (opens [`lua/config/lazy.lua`](lua/config/lazy.lua))
+- `<leader>ek` - Edit keymaps (opens [`lua/config/keymaps.lua`](lua/config/keymaps.lua))
+- `<leader>sv` - Source vim config (reload after changes)
+
 ## Language Support
 
 - **Flutter/Dart**: Configured in [`lua/plugins/flutter.lua`](lua/plugins/flutter.lua)
@@ -67,6 +111,21 @@ Uses `gruvbox-material` with:
 - Background: `medium`
 - Palette: `material`
 - Italic and bold enabled
+
+LazyGit theme is configured in [`lua/plugins/lazygit.lua`](lua/plugins/lazygit.lua) to match the Gruvbox Material palette, with custom highlight fixes for `MatchParen` and `Visual` groups.
+
+## Code Formatting
+
+Configuration in [stylua.toml](stylua.toml):
+- Indent type: Spaces
+- Indent width: 2
+- Column width: 120
+
+## Performance Considerations
+
+- Smoothness plugins ([`smoothness.lua`](lua/plugins/smoothness.lua)) use `event = "VeryLazy"` to load after startup
+- `mini.animate` is disabled to prevent conflicts with smear-cursor and snacks.nvim
+- Smooth scrolling uses optimized settings (faster animations, no file-switching animation, no horizontal scroll)
 
 ## Removing Auto-commands
 

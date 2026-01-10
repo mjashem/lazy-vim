@@ -129,9 +129,7 @@ vim.keymap.set("n", "<leader>tt", function()
   vim.cmd("resize 15")
 end, { desc = "Toggle Terminal (Bottom)" })
 
--- Easy escape from terminal mode
-vim.keymap.set("t", "jj", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
+-- Exit terminal mode using default: Ctrl-\ Ctrl-n
 -- Close terminal (from normal mode)
 vim.keymap.set("n", "<leader>tc", "<cmd>close<cr>", { desc = "Close Terminal" })
 
