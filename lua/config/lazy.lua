@@ -22,6 +22,8 @@ require("lazy").setup({
     { import = "plugins.flutter" },
     { import = "plugins.colorscheme" },
     { import = "plugins.smoothness" },
+    { import = "plugins.harpoon" },
+    { import = "plugins.undotree" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
