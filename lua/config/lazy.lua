@@ -29,6 +29,7 @@ require("lazy").setup({
     { import = "plugins.lualine" },
     { import = "plugins.cmp" },
     { import = "plugins.mini-files" },
+    { import = "plugins.noice" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
