@@ -20,6 +20,7 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins.flutter" },
+    { import = "plugins.typescript" },
     { import = "plugins.colorscheme" },
     { import = "plugins.lazygit" },
     { import = "plugins.smoothness" },

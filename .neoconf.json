@@ -11,5 +11,52 @@
         "enabled": true
       }
     }
+  },
+  "typescript": {
+    "preferences": {
+      "importModuleSpecifier": "project-relative",
+      "includeInlayParameterNameHints": "all",
+      "includeInlayFunctionParameterTypeHints": true,
+      "includeInlayVariableTypeHints": true,
+      "includeInlayPropertyDeclarationTypeHints": true,
+      "includeInlayFunctionLikeReturnTypeHints": true
+    },
+    "suggest": {
+      "autoImports": true,
+      "includeAutomaticOptionalChainCompletions": true,
+      "includeCompletionsForImportStatements": true,
+      "classMemberSnippets": { "enabled": true },
+      "objectLiteralMethodSnippets": { "enabled": true },
+      "completeFunctionCalls": true
+    },
+    "format": {
+      "enable": true,
+      "indentSize": 2,
+      "tabSize": 2
+    },
+    "updateImportsOnFileMove": {
+      "enabled": "always"
+    }
+  },
+  "javascript": {
+    "preferences": {
+      "importModuleSpecifier": "project-relative"
+    },
+    "suggest": {
+      "autoImports": true,
+      "includeAutomaticOptionalChainCompletions": true,
+      "includeCompletionsForImportStatements": true,
+      "classMemberSnippets": { "enabled": true },
+      "objectLiteralMethodSnippets": { "enabled": true },
+      "completeFunctionCalls": true
+    },
+    "format": {
+      "enable": true,
+      "indentSize": 2,
+      "tabSize": 2
+    },
+    "updateImportsOnFileMove": {
+      "enabled": "always"
+    }
   }
 }
